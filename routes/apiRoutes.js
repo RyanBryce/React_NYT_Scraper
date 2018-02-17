@@ -1,9 +1,7 @@
 const articleController = require('../controllers/articlesController');
 const nytController = require('../controllers/nytController');
-
-const name = require('jsFile');
+const path = require("path")
 module.exports = (app) => {
-  app.get()
 
   app.get("/api/articles",  articleController.findAll)
   app.post("/api/articles", articleController.create)
