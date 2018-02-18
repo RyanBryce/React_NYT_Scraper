@@ -1,10 +1,10 @@
 import axios from "axios";
-import filterParams from "./filterParams";
 
 export default {
   // Gets articles from the NYT API
-  getArticles: function (params) {
-    return axios.get("/api/nyt", { params: filterParams(params) });
+  getArticles: function (paramsObj) {
+    console.log(paramsObj)
+    return axios.get("/api/nyt", { params: paramsObj });
   },
   // Gets all saved articles
   getSavedArticles: function () {

@@ -7,6 +7,8 @@ module.exports = (app) => {
   app.post("/api/articles", articleController.create)
   app.delete("/api/articles", articleController.delete)
 
+  app.get("/api/nyt", nytController.getArticles)
+
   app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "./client/build/index.html"));
   });
