@@ -5,7 +5,7 @@ module.exports = (app) => {
 
   app.get("/api/articles",  articleController.findAll)
   app.post("/api/articles", articleController.create)
-  app.delete("/api/articles", articleController.delete)
+  app.delete("/api/articles/:id", articleController.delete)
 
   app.get("/api/nyt", nytController.getArticles)
 

@@ -36,13 +36,22 @@ class Home extends Component {
       });
     })
   }
-  handleSave = (event) => {
+
+  handleSave = (id) => {
     console.log("working");
-    // API.saveArticle()
+    const article = this.state.articles.find((article) => {
+      return article._id === id
+    })
+    console.log(article)
+    API.saveArticle(article).then((res) => {
+      console.log(res)
+    })
   }
+  
   formatDate = (date) => {
     const articleDate = new Date(date)
-    return `${articleDate.getDate()}/${articleDate.getDate()}/${articleDate.getDate()}`}
+    return date ? (`${articleDate.getMonth() + 1}/${articleDate.getDate()}/${articleDate.getFullYear()}`) : `Not Provided`
+  }
   
 
 
@@ -77,7 +86,9 @@ class Home extends Component {
                         key={article._id} 
                         id={article._id} 
                         href={article.web_url}
-                date={this.formatDate(article.pub_data)}> 
+                        date={this.formatDate(article.pub_date)}
+                        snippet={article.snippet}
+                        buttonName="Save"> 
                         { article.snippet } 
                       </Article>
           })}
